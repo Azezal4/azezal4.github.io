@@ -2,375 +2,487 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Ujjwal Aryal | Web Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. RESET AND UTILITIES --- */
+        :root {
+            --color-dark: #1C1C1C;
+            --color-light: #F9F9F9;
+            --color-accent: #0077B6; /* A clean, deep blue */
+            --color-gray: #AAAAAA;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--color-dark);
+            background-color: var(--color-light);
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--color-dark);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        /* --- 2. HEADER/NAV --- */
+        header {
+            background-color: var(--color-light);
+            border-bottom: 1px solid #EAEAEA;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-dark);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links a {
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+        
+        /* Mobile menu button hidden by default on desktop */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-dark);
+        }
+
+        /* --- 3. HERO SECTION --- */
+        #hero {
+            padding: 6rem 0 8rem;
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--color-accent);
+            color: var(--color-light);
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #005691; /* Darker accent on hover */
+            color: var(--color-light); /* Maintain light text color */
+        }
+
+        .hero-image {
+            /* Placeholder for a professional image */
+            width: 100%;
+            padding-top: 100%; /* Creates a perfect square for the image area */
+            background-color: #E0E0E0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- 4. PROJECTS SECTION --- */
+        .section-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border: 1px solid #EAEAEA;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px; /* Fixed height for consistent cards */
+            background-color: #D3D3D3;
+            /* In a real project, replace this background with a project screenshot */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .project-details {
+            padding: 1.5rem;
+        }
+
+        .project-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .project-details p {
+            font-size: 0.95rem;
+            color: #777;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-tags {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: #EEE;
+            color: var(--color-dark);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* --- 5. ABOUT/SKILLS SECTION --- */
+        #about {
+            background-color: var(--color-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background-color: white;
+            border: 1px solid #EAEAEA;
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+
+        .stat-box .number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            line-height: 1;
+        }
+
+        .stat-box .label {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            color: #555;
+        }
+
+        .skills-list h3 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skills-list ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dotted #CCC;
+            font-weight: 500;
+        }
+
+        /* --- 6. CONTACT/FOOTER --- */
+        #contact {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            text-align: center;
+        }
+
+        #contact h2 {
+            color: var(--color-light);
+            margin-bottom: 1rem;
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info a {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+            background-color: #111;
+            color: var(--color-gray);
+        }
+
+        /* --- 7. MEDIA QUERIES (RESPONSIVENESS) --- */
+        @media (max-width: 900px) {
+            #hero {
+                grid-template-columns: 1fr; /* Stack hero elements */
+                gap: 2rem;
+            }
+
+            .hero-image {
+                order: -1; /* Move image to the top on mobile */
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr; /* Stack about content */
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .nav-links {
+                /* Mobile Menu: Start hidden and full screen */
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--color-light);
+                border-top: 1px solid #EAEAEA;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 1.5rem;
+                text-align: center;
+                border-bottom: 1px solid #F0F0F0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+    </style>
 </head>
-<body class="main-content">
-    <header class="container header active" id="home">
-        <div class="header-content">
-            <div class="left-header">
-                <div class="h-shape"></div>
-                <div class="image">
-                    <img src="./img/1.jpg" alt="">
-                </div>
-            </div>
-            <div class="right-header">
-                <h1 class="name">
-                    Hi, I'm <span><br>Ujjwal Prasad Aryal.</span>
-                    <br>Web Developer.
-                </h1>
-                <p>
-                    I am a professional web developer with 2.5 years of experience. I am passionate about creating websites that not only look great, but also function seamlessly. I believe in creating web solutions that are both aesthetically pleasing and user-friendly.
-                </p>
-                <div class="btn-con">
-                    <a href="" class="main-btn">
-                        <span class="btn-text">Download CV</span>
-                        <span class="btn-icon"><i class="fas fa-download"></i></span>
-                    </a>
-                </div>
-            </div>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <a href="#hero" class="logo">U.A.</a>
+            <nav>
+                <ul class="nav-links" id="mobile-menu">
+                    <li><a href="#projects">Work</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="CV_LINK_HERE" target="_blank" class="cta-button">Resume</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
         </div>
     </header>
-    <main>
-        <section class="container about" id="about">
-            <div class="main-title">
-                <h2>About <span>me</span><span class="bg-text">my stats</span></h2>
-            </div>
-            <div class="about-container">
-                <div class="left-about">
-                    <h4>About me</h4>
-                    <p>
-                        I take pride in my attention to detail and my ability to work collaboratively with clients to bring their ideas to life. <br>I am excited to continue creating beautiful and functional websites using my expertise in Flask and other web development technologies such as Ajax, jQuery, and JavaScript.
-                    </p>
-                    <div class="btn-con">
-                        <a href="#" class="main-btn">
-                            <span class="btn-text">Download CV</span>
-                            <span class="btn-icon"><i class="fas fa-download"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="right-about">
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">25+</p>
-                            <p class="small-text">Projects <br /> Completed</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">2+</p>
-                            <p class="small-text">Years of <br /> experience</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">25+</p>
-                            <p class="small-text">Happy <br /> Clients</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">100+</p>
-                            <p class="small-text">Customer <br /> reviews</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-stats">
-                <h4 class="stat-title">My Skills</h4>
-                <div class="progress-bars">
-                    <div class="progress-bar">
-                        <p class="prog-title">html5</p>
-                        <div class="progress-con">
-                            <p class="prog-text">80%</p>
-                            <div class="progress">
-                                <span class="html"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">css3</p>
-                        <div class="progress-con">
-                            <p class="prog-text">95%</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">javascript</p>
-                        <div class="progress-con">
-                            <p class="prog-text">75%</p>
-                            <div class="progress">
-                                <span class="js"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Flask</p>
-                        <div class="progress-con">
-                            <p class="prog-text">75%</p>
-                            <div class="progress">
-                                <span class="react"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Ajax</p>
-                        <div class="progress-con">
-                            <p class="prog-text">87%</p>
-                            <div class="progress">
-                                <span class="node"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Python</p>
-                        <div class="progress-con">
-                            <p class="prog-text">70%</p>
-                            <div class="progress">
-                                <span class="python"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h4 class="stat-title">My Timeline</h4>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2021 - present</p>
-                    <h5><a href="https://beta-analytics.com/" style="text-decoration: none;cursor:pointer;"> Web Developer<span> - Beta Analytics Pvt Ltd</span></a></h5>
-                    <p>
-                        Built and maintained various websites including CMS(Content Management system) in backend and Bootstrap as a frontend.
-                        Used Numpy and Pandas in various projects.
-                        Extensive Use of SQLAlchemy as an ORM for table creation but used raw SQL query for queries.
 
-                    </p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2016 - 2020</p>
-                    <h5>Computer Science Degree<span> - St. Xaviers College</span></h5>
-                    <p>
-                        Undergraduate Degree in Computer Science and Information Technology affiliated to Tribhuwan University.
-                    </p>
-                </div>
+    <section id="hero" class="container">
+        <div class="hero-text">
+            <h1>Building Seamless Web Solutions with Python & Flask.</h1>
+            <p>I am a professional web developer with 2.5 years of experience, passionate about creating aesthetically pleasing and user-friendly web solutions.</p>
+            <a href="CV_LINK_HERE" target="_blank" class="cta-button">Download CV</a>
+        </div>
+        <div class="hero-image">
+            <img src="./img/1.jpg" alt="">
+        </div>
+    </section>
 
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
+    <section id="projects" class="container">
+        <h2 class="section-heading">My Recent Work</h2>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <div class="project-image"><img src="img/port1.jpg" alt=""></div>
+                <div class="project-details">
+                    <h3>Ecommerce Platform</h3>
+                    <p>A multi-vendor e-commerce site built for scalability and secure transactions.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Flask</span>
+                        <span class="tag">SQLAlchemy</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">jQuery</span>
                     </div>
-                    <p class="tl-duration">2019 - 2021</p>
-                    <h5><a href="https://creativesathi.com/" style="text-decoration: none;cursor:pointer;"> Digital Marketing Specialist<span> - Creative Sathi</span></a></h5>
-                    <p>
-                        Worked as a digital marketing content strategist.
-                        Provided insights on the market trends to the graphical teams to come up with better designs.
+                    <a href="PROJECT_LINK_HERE" target="_blank">View Project &rarr;</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="img/port2.jpg" alt=""></div>
+                <div class="project-details">
+                    <h3>Financial Dashboard</h3>
+                    <p>Real-time stock tracking and broker data visualization platform using Ajax.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Flask</span>
+                        <span class="tag">Ajax</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Pandas</span>
+                    </div>
+                    <a href="PROJECT_LINK_HERE" target="_blank">View Project &rarr;</a>
+                </div>
+            </div>
 
-                    </p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
+            <div class="project-card">
+                <div class="project-image"><img src="img/port3.jpg" alt=""></div>
+                <div class="project-details">
+                    <h3>GTK-3 Automation Tool</h3>
+                    <p>Desktop application for automated tasks, improving internal operational efficiency.</p>
+                    <div class="tech-tags">
+                        <span class="tag">GTK-3</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Linux</span>
                     </div>
-                    <p class="tl-duration">2014 - 2016</p>
-                    <h5>High School<span> - NASA I'NTL College</span></h5>
-                    <p>
-                        Completed High School in science stream
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2016 - 2017</p>
-                    <h5><a href="https://basecamptrek.com/" style="text-decoration: none;cursor:pointer;"> Airport Representative <span> - Base Camp Trekking Pvt. Ltd</span></a></h5>
-                    <p>
-                        Worked as Airport Representative in a french Trekking agency.
-                    </p>
-                </div>
-               
-            </div>
-        </section>
-        <section class="container" id="portfolio">
-            <div class="main-title">
-                <h2>My <span>Portfolio</span><span class="bg-text">My Work</span></h2>
-            </div>
-            <p class="port-text">
-                Here is some of my work that I've done in various programming languages.
-            </p>
-            <div class="portfolios">
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port1.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Ecommerce Site</h3>
-                        <div class="icons">
-                            <a href="https://dlcsuppliers.org/" class="icon">
-                                <i class="fa fa-link"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port2.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Stock Broker Site</h3>
-                        <div class="icons">
-                            <a href="https://mallastock.com/" class="icon">
-                                <i class="fa fa-link"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port3.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Automation using GTK-3</h3>
-                        <div class="icons">
-                            <a href="https://www.youtube.com/watch?v=aVds8rQDW9w" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port4.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Construction Company Site</h3>
-                        <div class="icons">
-                            <a href="https://lbc.com.np/" class="icon">
-                                <i class="fa fa-link"></i>
-                            </a>
-                        </div>
-                    </div>
+                    <a href="PROJECT_LINK_HERE" target="_blank">View Project &rarr;</a>
                 </div>
             </div>
-        </section>
-        <section class="container contact" id="contact">
-            <div class="contact-container">
-                <div class="main-title">
-                    <h2>Contact <span>Me</span><span class="bg-text">Contact</span></h2>
-                </div>
-                <div class="contact-content-con">
-                    <div class="left-contact">
-                        <h4>Contact me here</h4>
-                        <p>
-                            I'm open to Collaboration so feel free to contact me.
-                        </p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Location</span>
-                                </div>
-                                <p>
-                                    : Brampton, Canada
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Email</span>
-                                </div>
-                                <p>
-                                    <span> u.azezal@gmail.com</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <span>Education</span>
-                                </div>
-                                <p>
-                                    <span> Tribhuwan University, Nepal</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <span>Mobile Number</span>
-                                </div>
-                                <p>
-                                    <span> +1 905 923 9667</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-globe-africa"></i>
-                                    <span>Languages</span>
-                                </div>
-                                <p>
-                                    <span> English, French, Nepali</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="contact-icons">
-                            <div class="contact-icon">
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right-contact">
-                        <form action="" class="contact-form">
-                            <div class="input-control i-c-2">
-                                <input type="text" required placeholder="YOUR NAME">
-                                <input type="email" required placeholder="YOUR EMAIL">
-                            </div>
-                            <div class="input-control">
-                                <input type="text" required placeholder="ENTER SUBJECT">
-                            </div>
-                            <div class="input-control">
-                                <textarea name="" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
 
-    <div class="controls">
-        <div class="control active-btn" data-id="home" >
-            <i class="fas fa-home"></i>
+            </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-heading">About Me & Skills</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I take pride in my attention to detail and my ability to work collaboratively to bring complex web ideas to life. I specialize in the full lifecycle of web applications, from database design using raw SQL/SQLAlchemy to intuitive front-end delivery with JavaScript, Ajax, and modern CSS frameworks.</p>
+                <p>I am excited to continue creating beautiful and functional websites, particularly leveraging my expertise in **Flask** and the Python data science ecosystem (Numpy, Pandas) for insightful web solutions.</p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="number">2.5+</div>
+                        <div class="label">Years of Experience</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">25+</div>
+                        <div class="label">Projects Completed</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-list">
+                <h3>Core Technologies</h3>
+                <ul>
+                    <li>Python (Flask, Django)</li>
+                    <li>HTML5 & CSS3</li>
+                    <li>JavaScript (Vanilla, jQuery)</li>
+                    <li>Ajax / REST APIs</li>
+                    <li>SQLAlchemy & Raw SQL</li>
+                    <li>Pandas & Numpy</li>
+                    <li>Bootstrap</li>
+                    <li>Git / Github</li>
+                </ul>
+            </div>
         </div>
-        <div class="control" data-id="about">
-            <i class="fas fa-user"></i>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Let's build something great.</h2>
+            <p>I am open to collaborations and new opportunities. Feel free to reach out directly.</p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:u.azezal@gmail.com">u.azezal@gmail.com</a></p>
+                <p>Mobile: <a href="tel:+19059239667">+1 905 923 9667</a></p>
+                <p>Location: Brampton, Canada</p>
+            </div>
         </div>
-        <div class="control" data-id="portfolio">
-            <i class="fas fa-briefcase"></i>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2025 Ujjwal Aryal. Built with a modern, minimalist approach.
         </div>
-        <div class="control" data-id="contact">
-            <i class="fas fa-envelope-open"></i>
-        </div>
-    </div>
-    <div class="theme-btn">
-        <i class="fas fa-adjust"></i>
-    </div>
-    <script src="app.js"></script>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
+  
