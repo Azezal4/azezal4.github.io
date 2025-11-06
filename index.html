@@ -131,16 +131,24 @@
             color: var(--color-light); /* Maintain light text color */
         }
 
-        .hero-image {
-            /* Placeholder for a professional image */
-            width: 100%;
-            padding-top: 100%; /* Creates a perfect square for the image area */
-            background-color: #E0E0E0;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            max-height: fit-content;
-        }
+       .hero-image {
+    /* We remove padding-top: 100% and rely on the image scaling for height */
+    width: 100%; 
+    background-color: transparent; /* Changed to transparent for a clean look */
+    border-radius: 8px; /* Maintain subtle rounded corners */
+    overflow: hidden;
+    /* Optional: Add a subtle border or shadow if you want it to pop */
+}
+
+.profile-pic {
+    /* Ensure the image fills its container while maintaining aspect ratio */
+    display: block;
+    width: 100%;
+    height: auto; 
+    object-fit: cover; /* Important for scaling the image cleanly */
+    /* Optional: Make the image perfectly round */
+    /* border-radius: 50%; */
+}
 
         /* --- 4. PROJECTS SECTION --- */
         .section-heading {
@@ -371,7 +379,7 @@
             <a href="CV_LINK_HERE" target="_blank" class="cta-button">Download CV</a>
         </div>
         <div class="hero-image">
-            <img src="./img/1.png" alt="">
+            <img src="./img/1.png" class="hero-image" alt="">
         </div>
     </section>
 
