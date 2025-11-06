@@ -93,7 +93,42 @@
             cursor: pointer;
             color: var(--color-dark);
         }
-
+    /* --- New Project Links Styling --- */
+    .project-links {
+        display: flex; /* Arrange buttons side-by-side */
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+    }
+    
+    .link-button {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+    
+    .primary-link {
+        background-color: var(--color-accent);
+        color: var(--color-light);
+    }
+    
+    .primary-link:hover {
+        background-color: #005691;
+        color: var(--color-light);
+    }
+    
+    .secondary-link {
+        background-color: transparent;
+        border: 1px solid var(--color-accent);
+        color: var(--color-accent);
+    }
+    
+    .secondary-link:hover {
+        background-color: var(--color-accent);
+        color: var(--color-light);
+    }
         /* --- 3. HERO SECTION --- */
         #hero {
             padding: 6rem 0 8rem;
@@ -434,6 +469,24 @@
             </div>
     </section>
 
+    <!-- Project Section -->
+<div class="project-card">
+    <div class="project-image">E-commerce Screenshot</div>
+    <div class="project-details">
+        <h3>Ecommerce Platform</h3>
+        <p>A multi-vendor e-commerce site built for scalability and secure transactions using Flask.</p>
+        <div class="tech-tags">
+            <span class="tag">Flask</span>
+            <span class="tag">SQLAlchemy</span>
+            <span class="tag">Bootstrap</span>
+        </div>
+        
+        <div class="project-links">
+            <a href="LIVE_DEMO_LINK_HERE" target="_blank" class="link-button primary-link">Live Demo</a>
+            <a href="GITHUB_REPO_LINK_HERE" target="_blank" class="link-button secondary-link">GitHub</a>
+        </div>
+        </div>
+</div>
     <section id="about" class="container">
         <h2 class="section-heading">About Me & Skills</h2>
         <div class="about-content">
