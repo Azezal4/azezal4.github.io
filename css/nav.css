@@ -1,0 +1,54 @@
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+nav a:hover {
+  transform: translateY(-4px);
+  background: #fff4e6;
+  color: #DC7A0B;
+  box-shadow: 0 6px 18px rgba(220, 122, 11, 0.2);
+}
+
+.nav-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-arrow {
+  flex-shrink: 0;
+  margin-bottom: 1px;
+}
+
+.nav-name {
+  font-family: 'Sail', cursive;
+  color: #DC7A0B;
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  nav {
+    gap: 1rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+  }
+
+  .nav-name {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,157 @@
+/* ── Projects Section ── */
+#projects {
+  width: 100%;
+  padding: clamp(2rem, 5vw, 4rem) 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.projects-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.projects-title {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  color: #031868;
+  line-height: 1.2;
+}
+
+.projects-sub {
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: #888;
+  line-height: 26px;
+}
+
+/* ── Grid ── */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* ── Card ── */
+.project-card {
+  position: relative;
+  width: clamp(280px, 32vw, 481px);
+  height: clamp(400px, 46vw, 637px);
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow: 0px 14px 42.7px -12px #00000033;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card--clickable { cursor: pointer; }
+
+.project-card--clickable:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 22px 52px -12px #00000044;
+}
+
+.project-img {
+  position: absolute;
+  width: calc(100% - 8px);
+  height: 69%;
+  top: 4.79px;
+  left: 4px;
+  border-radius: 28px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-info {
+  position: absolute;
+  width: calc(100% - 48px);
+  bottom: 1rem;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.5vw, 20px);
+}
+
+.project-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  color: #031868;
+  line-height: 1.2;
+}
+
+.project-desc {
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  color: #555;
+  line-height: 1.5;
+}
+
+.project-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-tool {
+  font-size: 0.75rem;
+  color: #031868;
+  background: rgba(3, 24, 104, 0.07);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  white-space: nowrap;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.project-link {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: #DC7A0B;
+  border: 1.5px solid #DC7A0B;
+  border-radius: 999px;
+  padding: 0.25rem 0.9rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.project-link:hover {
+  background: #DC7A0B;
+  color: #fff;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .project-card {
+    width: 100%;
+    max-width: 481px;
+    height: auto;
+    padding-bottom: 1.5rem;
+  }
+
+  .project-img {
+    position: relative;
+    width: calc(100% - 8px);
+    height: 220px;
+    top: 4.79px;
+    left: 4px;
+  }
+
+  .project-info {
+    position: relative;
+    bottom: unset;
+    left: unset;
+    width: calc(100% - 48px);
+    margin: 1rem 24px 0;
+    gap: 12px;
+  }
+
+  .projects-title { font-size: 1.8rem; }
+}
