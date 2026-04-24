@@ -1,0 +1,232 @@
+/* ==========================================================================
+   Wheel Timeline
+   All selectors are scoped under .wt-root so styles do not leak into
+   the host site. Tweak the CSS variables at the top of .wt-root to restyle.
+   ========================================================================== */
+
+.wt-root {
+  /* ---- Tweakable tokens ------------------------------------------------ */
+  --wt-bg: #fff;
+  --wt-grid: rgba(255, 255, 255, 0.04);
+  --wt-text: #031868;
+  --wt-muted: #8a8f98;
+  --wt-accent: #031868;
+  --wt-accent-soft: rgba(74, 158, 255, 0.15);
+
+  --wt-height: 560px;          /* section height */
+  --wt-wheel-size: 2400px;     /* wheel diameter (desktop) */
+  --wt-wheel-peek: 60px;       /* how far the arc pokes into the section */
+
+  /* ---- Layout --------------------------------------------------------- */
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--wt-height);
+  overflow: hidden;            /* clips the giant wheel to this section */
+  background-color: var(--wt-bg);
+  background-image: radial-gradient(circle, var(--wt-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--wt-text);
+  user-select: none;
+  isolation: isolate;          /* new stacking context, won't affect siblings */
+}
+
+.wt-root *,
+.wt-root *::before,
+.wt-root *::after {
+  box-sizing: border-box;
+}
+
+/* Hint text at the top */
+.wt-root .wt-hint {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--wt-muted);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   The wheel: a huge circle anchored to the top of THIS section (not the
+   viewport). Its center sits far below the section, so only the top arc
+   is visible. Rotating the wheel moves different years into the top slot.
+   -------------------------------------------------------------------------- */
+.wt-root .wt-wheel {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--wt-wheel-size);
+  height: var(--wt-wheel-size);
+  margin-left: calc(var(--wt-wheel-size) / -2);
+  margin-top: calc(var(--wt-wheel-peek) * -1);
+  border-radius: 50%;
+  transition: transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.wt-root .wt-item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+}
+
+.wt-root .wt-dot {
+  position: absolute;
+  left: -7px;
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #6a6f78;
+  cursor: pointer;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.wt-root .wt-year {
+  position: absolute;
+  top: -44px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #6a6f78;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.4s ease, font-size 0.4s ease;
+}
+
+.wt-root .wt-item.is-active .wt-dot {
+  background: var(--wt-accent);
+  box-shadow: 0 0 0 6px var(--wt-accent-soft);
+}
+
+.wt-root .wt-item.is-active .wt-year {
+  color: var(--wt-accent);
+  font-size: 15px;
+}
+
+/* Vertical stem connecting the active dot down to the content panel */
+.wt-root .wt-stem {
+  position: absolute;
+  left: 50%;
+  top: 80px;
+  width: 1px;
+  height: 90px;
+  background: var(--wt-accent);
+  opacity: 0.6;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content panel sits below the arc */
+.wt-root .wt-content {
+  position: absolute;
+  left: 50%;
+  top: 200px;
+  transform: translateX(-50%);
+  width: min(520px, 82%);
+  text-align: center;
+  padding: 0 20px;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.wt-root .wt-content.is-fading {
+  opacity: 0;
+}
+
+.wt-root .wt-big-year {
+  margin: 0 0 8px 0;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.wt-root .wt-title {
+  margin: 0 0 14px 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: var(--wt-accent);
+}
+
+.wt-root .wt-body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--wt-muted);
+}
+
+/* Navigation buttons */
+.wt-root .wt-nav {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 3;
+}
+
+.wt-root .wt-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(86, 86, 86, 0.12);
+  background:  rgba(3, 24, 104, 0.07);
+  color: var(--wt-text);
+  font-family: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+}
+
+.wt-root .wt-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.wt-root .wt-btn:active {
+  transform: scale(0.95);
+}
+
+.wt-root .wt-btn:focus-visible {
+  outline: 2px solid var(--wt-accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile — smaller wheel and tighter vertical rhythm.
+   The JS reads getComputedStyle() to match its radius to whatever's set here.
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .wt-root {
+    --wt-height: 480px;
+    --wt-wheel-size: 1600px;
+    --wt-wheel-peek: 40px;
+  }
+  .wt-root .wt-stem { top: 60px; height: 70px; }
+  .wt-root .wt-content { top: 160px; }
+  .wt-root .wt-big-year { font-size: 30px; }
+  .wt-root .wt-body { font-size: 14px; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .wt-root .wt-wheel,
+  .wt-root .wt-content,
+  .wt-root .wt-dot,
+  .wt-root .wt-year {
+    transition: none;
+  }
+}

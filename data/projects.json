@@ -1,25 +1,23 @@
 [
   {
-    "name": "GTK-3 Automation Tool",
-    "description": "Automated Python tutorials using GTK-3 for GUI, eSpeak for text-to-speech narration, and VS Code as the editor backend",
-    "image": "img/projects/python-tutorial.png",
+    "name": "Oasis Ecommerce Platform",
+    "description": "Ecommerce platform for Auto parts, using wordpress: Woocommerce",
+    "image": "img/projects/oasis.jpeg",
     "live": "https://www.youtube.com/watch?v=aVds8rQDW9w",
-    "github": "",
-    "tools": ["Python", "GTK-3", "Bash", "eSpeak"]
+    "tools": ["Wordpress", "Php", "Woocommerce"]
   },
   {
     "name": "Financial Site",
     "description": "A full-stack financial website with a Flask backend, PostgreSQL database via SQLAlchemy ORM, and Jinja2-powered dynamic templates.",
-    "image": "img/projects/malla.png",
+    "image": "img/projects/malla.jpeg",
     "live": "https://mallastock.com/",
-    "github": "#",
     "tools": ["Flask", "PostgreSQL", "SQLAlchemy", "Jinja2", "Bootstrap"]
   },
   {
     "name": "Company Site for a Creative Client",
     "description": "A well designed company website for a company based on Nepal using Wordpress.",
-    "image": "img/projects/cerative-sathi.png",
+    "image": "img/projects/creative-sathi.jpeg",
     "live": "https://creativesathi.com/",
-    "tools": ["wordpress", "php"]
+    "tools": ["Flask", "Bootstrap"]
   }
 ]

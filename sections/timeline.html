@@ -1,0 +1,31 @@
+<!--
+  WHEEL TIMELINE — drop-in section
+  ────────────────────────────────
+  1. Paste this <section> where you want the timeline to appear.
+  2. Link wheel-timeline.css in your page <head>.
+  3. Link wheel-timeline.js before </body>.
+  Everything is scoped under .wt-root so it will not affect the rest of the page.
+-->
+<div class="projects-header">
+    <h2 class="projects-title">Career journey so far</h2>
+    <br>
+  </div>
+<section class="wt-root" aria-label="Career timeline">
+
+  <div class="wt-wheel" data-wt-wheel>
+    <!-- Year dots are injected here by wheel-timeline.js -->
+  </div>
+
+  <div class="wt-stem"></div>
+
+  <div class="wt-content" data-wt-content>
+    <div class="wt-big-year" data-wt-year>2019</div>
+    <h3 class="wt-title" data-wt-title>Developer &amp; QA engineer</h3>
+    <p class="wt-body" data-wt-body>Joined Beta Analytics in Kathmandu.</p>
+  </div>
+
+  <div class="wt-nav">
+    <button type="button" class="wt-btn" data-wt-prev aria-label="Previous year">&#8592;</button>
+    <button type="button" class="wt-btn" data-wt-next aria-label="Next year">&#8594;</button>
+  </div>
+</section>
