@@ -27,7 +27,16 @@
   width: max-content;
   gap: clamp(12px, 2vw, 32px);
   align-items: center;
-  animation: scroll-left 12s linear infinite;
+  animation: scroll-left 18s linear infinite;
+}
+
+.stack-track-reverse {
+  display: flex;
+  flex-shrink: 0;
+  width: max-content;
+  gap: clamp(12px, 2vw, 32px);
+  align-items: center;
+  animation: scroll-right 18s linear infinite;
 }
 
 .stack-tag {
@@ -37,6 +46,7 @@
   width: clamp(120px, 13vw, 187.99px);
   height: clamp(52px, 5.5vw, 77.36px);
   border-radius: 10.79px;
+  overflow: hidden;
   background: #ffffff;
   flex-shrink: 0;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -55,8 +65,13 @@
 }
 
 @keyframes scroll-left {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { 
+    transform: translateX(-66.6666%);  
+  }
+}
+
+@keyframes scroll-right {
+  0%   { transform: translateX(-100%); }
 }
 
 @media (max-width: 768px) {
