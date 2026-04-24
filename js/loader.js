@@ -3,6 +3,7 @@ const sections = [
   { id: 'section-stack',    src: 'sections/stack.html' },
   { id: 'section-unique',   src: 'sections/unique.html' },
   { id: 'section-about-more', src: 'sections/about-more.html' },
+  { id: 'timeline', src: 'sections/timeline.html' },
   { id: 'section-projects',   src: 'sections/projects.html', onLoad: loadProjects },
   { id: 'section-contact',    src: 'sections/contact.html' },
 ];
@@ -45,3 +46,4 @@ function loadProjects() {
     })
     .catch(err => console.error('Failed to load projects.json:', err));
 }
+
